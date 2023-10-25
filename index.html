@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Weather App Project JavaScript | CodingNepal</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> 
+    
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" integrity="sha512-HXXR0l2yMwHDrDyxJbrMD9eLvPe3z3qL3PPeozNTsiHJEENxx8DH2CxmV05iwG0dwoz5n4gQZQyYLUNt1Wdgfg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  </head>
+  <body>
+    <h1 class="text-light">Weather Update</h1>
+    <div class="container">
+      <div class="weather-input">
+        <h3>Enter a City Name</h3>
+        <input id="cityname"  type="text" placeholder="E.g., New York, London, Tokyo">
+        <button onclick="search()" class="search-btn">Search</button>
+        
+        <div>
+          <button class="reset">Reset</button>
+        </div>
+
+      </div>
+      <div class="weather-data">
+        <div class="current-weather">
+          <div id="details" class="details">
+            <h2 id="countryname">Country Name : </h2>
+            <h6>Temperature: </h6>
+            <h6>Wind: </h6>
+            <h6>Humidity: </h6>
+            <h6>Pressure: </h6>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="details" id="detls">
+      
+        <!-- <h1  class="head2">temperature</h1>
+
+        <h2 >cityname</h2>
+
+        <h4>date</h4> -->
+
+    </div>
+    
+  </body>
+
+<script>
+function search(){
+  let name = cityname.value
+  console.log(name);
+if(name){
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=4c7c26407e9673047605881488d592ac`)
+.then((response)=>{(response.json().then((weather)=>{
+  console.log(weather);
+  //country
+  cname = weather.sys.country
+  console.log(cname);
+
+  //humidity
+  humi = weather.main.humidity
+  console.log(humi);
+
+  //wind
+  wind = weather.wind.speed
+  console.log(wind);
+
+  //temperature
+  temp = weather.main.temp
+  temp = eval(temp-273.15)
+  temperature = temp.toFixed(1)
+  console.log(temperature);
+
+  //pressure
+  pressure = weather.main.pressure
+  console.log(pressure);
+
+  //cityname
+  city = weather.name
+  console.log(city);
+
+  //date
+  date = Date()
+  console.log(date);
+
+  
+
+  details.innerHTML = `
+            <h2 >Country Name :${cname} </h2>
+            <h6>Temperature : ${temperature} ℃</h6>
+            <h6>Wind: ${wind}Kmph</h6>
+            <h6>Humidity: ${humi}%</h6>
+            <h6>Pressure: ${pressure}</h6>`
+
+            
+            detls.innerHTML =`<h1  class="head2">${temperature} ℃</h1>
+
+                              <h2 >${city}</h2>
+
+                              <h4 fs-3>${date}</h4>`
+
+  
+
+}));}).catch((error)=>{console.log(error);})
+}
+else{
+  alert('Enter input')
+}
+
+}
+
+
+
+
+</script>
+
+</html>
