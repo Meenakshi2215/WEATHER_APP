@@ -2,7 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Weather App Project JavaScript | CodingNepal</title>
+    <title>Weather App</title>
+    <link rel="icon" type="image/x-icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuhV6UoVOhzNo4ctebB0JS9U-YtXK5kh7bIQFPvZlVGTU6an1qCT8mucSXU8a1FVtiVbU&usqp=CAU">
+
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -19,12 +21,12 @@
     <h1 class="text-light">Weather Update</h1>
     <div class="container">
       <div class="weather-input">
-        <h3>Enter a City Name</h3>
+        <h3 class="text-white">Enter a City Name</h3>
         <input id="cityname"  type="text" placeholder="E.g., New York, London, Tokyo">
         <button onclick="search()" class="search-btn">Search</button>
         
         <div>
-          <button class="reset">Reset</button>
+          <a href="javascript:location.reload();" style="background-color: rgba(28, 32, 40);"><button class="reset">Reset</button></a>
         </div>
 
       </div>
@@ -43,6 +45,7 @@
     </div>
 
     <div class="details" id="detls">
+      
       
         <!-- <h1  class="head2">temperature</h1>
 
